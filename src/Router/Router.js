@@ -1,7 +1,7 @@
-import './Router.scss';
+import './scss/router.scss';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import routes from './routes';
-import React, { Suspense } from 'react';
+import React, { Suspense, Fragment } from 'react';
 import RouteWithSubRoutes from './subcomp/RouteWithSubRoutes';
 import Nav from '@@/components/nav/Nav';
 import Loading from '@@/components/loading/Loading';
@@ -9,12 +9,12 @@ import Loading from '@@/components/loading/Loading';
 function App() {
   return (
     <BrowserRouter>
-      <div className="website">
-        <header className="website-header">
-          <Nav/>
+      <Fragment>
+        <header className="website-header" >
+          <Nav routes={routes}/>
         </header>
         <Suspense fallback={<Loading/>}>
-          <section className="website-body">
+          <main className="website-body">
             <Switch>
               {routes.map((route, i) => (
                 route.subroutes ? <RouteWithSubRoutes key={i} {...route} />
@@ -27,9 +27,9 @@ function App() {
                   </Route>
               ))}
             </Switch>
-          </section>
+          </main>
         </Suspense>
-      </div>
+      </Fragment>
     </BrowserRouter>
   );
 }

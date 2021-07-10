@@ -4,7 +4,8 @@ import {
 } from 'react-redux';
 import store from '@@/store/store';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
+import './scss/_global.scss';
 import 'antd/dist/antd.css';
 import AppRouter from './Router/Router';
 import reportWebVitals from './reportWebVitals';
