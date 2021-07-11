@@ -7,17 +7,16 @@ export default function Home() {
   let frontEndStack = [];
   frontEndStack.length = 3;
   frontEndStack.fill(1);
-  console.log(frontEndStack);
-  frontEndStack = frontEndStack.map(() => {
+  let frontEndStackMemo = frontEndStack.map(() => {
     return {
       percent: (Math.random() * 100) >> 0,
       icon: `${process.env.PUBLIC_URL}/home/vue-icon.png`,
       stack: 'vuejs'
     }
-  });
+  }, [frontEndStack]);
   console.log(frontEndStack);
   const frontEndHTML = useMemo(() => {
-    return frontEndStack.map((tech) => {
+    return frontEndStackMemo.map((tech) => {
       return (<Fragment>
         <Progress className="progress" percent={tech.percent} showInfo={false} />
         <label htmlFor={tech.stack} className="progress-label">
@@ -25,9 +24,9 @@ export default function Home() {
         </label>
       </Fragment>)
     });
-  }, []);
+  }, [frontEndStackMemo]);
   const databaseHTML = useMemo(() => {
-    return frontEndStack.map((tech) => {
+    return frontEndStackMemo.map((tech) => {
       return (<Fragment>
         <Progress className="progress" percent={tech.percent} showInfo={false} />
         <label htmlFor={tech.stack} className="progress-label">
@@ -35,9 +34,9 @@ export default function Home() {
         </label>
       </Fragment>)
     });
-  }, [])
+  }, [frontEndStackMemo])
   const backendHTML = useMemo(() => {
-    return frontEndStack.map((tech) => {
+    return frontEndStackMemo.map((tech) => {
       return (<Fragment>
         <Progress status={'active'} className="progress" percent={tech.percent} showInfo={false} />
         <label htmlFor={tech.stack} className="progress-label">
@@ -45,7 +44,7 @@ export default function Home() {
         </label>
       </Fragment>)
     });
-  }, [])
+  }, [frontEndStackMemo])
   const TEMPLATE = (
     <section className="homepg">
       <article className="homepg__rowone">
