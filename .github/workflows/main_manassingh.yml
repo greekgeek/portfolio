@@ -52,4 +52,4 @@ jobs:
         app-name: 'manassingh'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_4f418751a2824cb9be0eb5db89ea58c0 }}
-        package: .
+        package: build
