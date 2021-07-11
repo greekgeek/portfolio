@@ -8,6 +8,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  AZURE_WEBAPP_PACKAGE_PATH: 'build' 
 
 jobs:
   build:
@@ -52,4 +54,4 @@ jobs:
         app-name: 'manassingh'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_4f418751a2824cb9be0eb5db89ea58c0 }}
-        package: build
+        package: ${{AZURE_WEBAPP_PACKAGE_PATH}}
