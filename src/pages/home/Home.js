@@ -51,7 +51,8 @@ export default function Home() {
         <Row justify="space-around" align="middle">
           <Col xs={24} lg={12} sm={12}>
             <section className="rowone-colone">
-              <img src={`${process.env.PUBLIC_URL}/home/profile_splash.png`} alt="Author splash"/>
+              
+              <img src={`${process.env.AZURE_ASSETS}/profile_splash.png`} alt="Author splash"/>
             </section>
           </Col>
           <Col xs={20} lg={12} sm={12}>
