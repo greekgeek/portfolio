@@ -31,7 +31,6 @@ jobs:
         npm install
         npm install -g serve
         npm run build --if-present
-        node serve -s build
 
     - name: Run Azure webapp deploy action using publish profile credentials
       uses: azure/webapps-deploy@v2
